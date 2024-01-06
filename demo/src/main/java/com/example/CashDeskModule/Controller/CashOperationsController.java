@@ -2,6 +2,7 @@ package com.example.CashDeskModule.Controller;
 
 import com.example.CashDeskModule.Entity.CashOperationRequest;
 import com.example.CashDeskModule.Entity.Cashier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,7 +19,8 @@ import java.nio.file.StandardOpenOption;
 public class CashOperationsController {
 
     private static final Cashier cashier = new Cashier();
-    private static final String API_KEY = "f9Uie8nNf112hx8s";
+    @Value("${API_KEY}")
+    private String API_KEY;
     private static final String TRANSACTIONS_FILE = "transactions.txt";
     private static final String BALANCES_FILE = "balances.txt";
 
@@ -67,4 +69,3 @@ public class CashOperationsController {
                 balanceInfo);
     }
 }
-
