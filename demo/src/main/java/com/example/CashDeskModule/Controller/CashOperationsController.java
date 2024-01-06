@@ -1,6 +1,7 @@
 package com.example.CashDeskModule.Controller;
 
 import com.example.CashDeskModule.Entity.CashOperationRequest;
+import com.example.CashDeskModule.Entity.Cashier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -8,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
@@ -15,6 +17,7 @@ import java.nio.file.StandardOpenOption;
 @RequestMapping("/api/v1")
 public class CashOperationsController {
 
+    private static final Cashier cashier = new Cashier();
     private static final String API_KEY = "f9Uie8nNf112hx8s";
     private static final String TRANSACTIONS_FILE = "transactions.txt";
     private static final String BALANCES_FILE = "balances.txt";
@@ -31,11 +34,20 @@ public class CashOperationsController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid API Key");
         }
 
-        String transactionRecord = request.getType() + " " + request.getAmount() + "\n";
-        Files.write(Paths.get(TRANSACTIONS_FILE), transactionRecord.getBytes(), StandardOpenOption.APPEND);
+        String transactionRecord = String.format("%s %s \n",
+                request.getType(),
+                request.getAmount());
 
+        Path path = Paths.get(TRANSACTIONS_FILE);
+        if (!(Files.exists(path))) {
+            Files.createFile(path);
+        }
 
-        return "Transaction recorded: " + transactionRecord;
+        Files.write(path, transactionRecord.getBytes(), StandardOpenOption.APPEND);
+
+        return String.format("Transaction recorded from cashier %s %s",
+                cashier.getNAME(),
+                transactionRecord);
     }
 
     @GetMapping("/cash-balance")
@@ -44,9 +56,15 @@ public class CashOperationsController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid API Key");
         }
 
-        String balanceInfo = new String(Files.readAllBytes(Paths.get(BALANCES_FILE)));
+        Path path = Paths.get(BALANCES_FILE);
+        if (!(Files.exists(path))) {
+            Files.createFile(path);
+        }
+        String balanceInfo = new String(Files.readAllBytes(path));
 
-        return "Current balance and denominations: " + balanceInfo;
+        return String.format("Current balance and denominations for cashier %s %s",
+                cashier.getNAME(),
+                balanceInfo);
     }
 }
 
