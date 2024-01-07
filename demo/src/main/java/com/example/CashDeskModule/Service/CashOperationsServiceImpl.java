@@ -46,6 +46,12 @@ public class CashOperationsServiceImpl implements CashOperationsService {
             return switch (transactionType) {
                 case "deposit", "withdrawal" -> {
                     double newAmount = (transactionType.equals("deposit")) ? depositAmount(amount) : withdrawalAmount(amount);
+
+                    if (newAmount == getCurrentBalance()) {
+                        System.out.println("No changes in the amount detected!");
+                        yield Optional.empty();
+                    }
+
                     request.setAmount(newAmount);
                     writeToTransactionsFile(request);
                     cashOperationsServiceRepository.save(request);
