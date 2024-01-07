@@ -3,6 +3,7 @@ package com.example.CashDeskModule.Service;
 
 import com.example.CashDeskModule.Entity.CashOperationRequest;
 import com.example.CashDeskModule.Repository.CashOperationsServiceRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,13 @@ public class CashOperationsServiceImpl implements CashOperationsService {
 
         return handleCashOperation(request);
     }
+
         //Software logic which handles sensitive data must always be processed in a private method and accessed from a public endpoint.
+        @Transactional
         private Optional<CashOperationRequest> handleCashOperation(CashOperationRequest request) throws IOException {
             String transactionType = request.getType();
             double amount = request.getAmount();
-
+            String currency = request.getCurrency();
             if (amount <= 0.0) {
                 System.out.println("Transaction amount must be positive. Invalid transaction not processed.");
                 return Optional.empty();
@@ -45,15 +48,15 @@ public class CashOperationsServiceImpl implements CashOperationsService {
 
             return switch (transactionType) {
                 case "deposit", "withdrawal" -> {
-                    double newAmount = (transactionType.equals("deposit")) ? depositAmount(amount) : withdrawalAmount(amount);
+                    double newAmount = (transactionType.equals("deposit")) ? depositAmount(amount, currency) : withdrawalAmount(amount, currency);
 
-                    if (newAmount == getCurrentBalance()) {
+                    if (newAmount == getCurrentBalance(currency)) {
                         System.out.println("No changes in the amount detected!");
                         yield Optional.empty();
                     }
 
                     request.setAmount(newAmount);
-                    writeToTransactionsFile(request);
+                    writeToTransactionsFile(request, TRANSACTIONS_FILE);
                     cashOperationsServiceRepository.save(request);
                     System.out.printf("%s transaction %s saved in the database!%n", transactionType, request.getId());
                     yield Optional.of(request);
@@ -66,23 +69,23 @@ public class CashOperationsServiceImpl implements CashOperationsService {
         }
 
 
-    private double depositAmount(double amount) {
+    private double depositAmount(double amount, String currency) {
         if (amount <= 0.0) {
             System.out.println("Please enter a positive amount to deposit!");
-            return getCurrentBalance();
+            return getCurrentBalance(currency);
         }
-        return getCurrentBalance() + amount;
+        return getCurrentBalance(currency) + amount;
     }
 
-    private double getCurrentBalance() {
-        return cashOperationsServiceRepository.findLastTransaction()
+    private double getCurrentBalance(String currency) {
+        return cashOperationsServiceRepository.findLastTransaction(currency)
                 .map(CashOperationRequest::getAmount)
                 .orElse(0.0);
     }
 
 
-    private double withdrawalAmount(double amount) {
-        double currentBalance = getCurrentBalance();
+    private double withdrawalAmount(double amount, String currency) {
+        double currentBalance = getCurrentBalance(currency);
 
         if (amount <= 0.0) {
             System.out.println("Please enter a positive amount to withdraw!");
@@ -98,33 +101,52 @@ public class CashOperationsServiceImpl implements CashOperationsService {
     }
 
 
-    private void writeToTransactionsFile(CashOperationRequest request) throws IOException {
-
+    public void writeToTransactionsFile(CashOperationRequest request, String file) throws IOException {
+        Path path = Paths.get(file);
+        String transactionRecord;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
 
         request.setDate(dtf.format(date));
+        if (file.equals("TRANSACTIONS_FILE")) {
 
-        String transactionRecord = String.format("""
+
+            transactionRecord = String.format("""
                     TRANSACTION REGISTERED:
                     Type: %s
                     Amount: %s
                     Made by: %s
+                    Currency: %s
                     On date & time: %s
-
+                    
                     """,
-                request.getType(),
-                request.getAmount(),
-                request.getCashier(),
-                dtf.format(date));
+                    request.getType(),
+                    request.getAmount(),
+                    request.getCashier(),
+                    request.getCurrency(),
+                    dtf.format(date));
 
-        Path path = Paths.get(TRANSACTIONS_FILE);
+
+        } else {
+            transactionRecord = String.format("""
+                    Balance for %s account as of date %s:
+                    BALANCE: %s
+                    Account Holder: %s
+                    DENOMINATIONS: %s
+                    
+                    """,
+                    request.getCurrency(),
+                    request.getDate(),
+                    request.getAmount(),
+                    request.getCashier(),
+                    request.getDenominations()
+                    );
+        }
         if (!Files.exists(path)) {
             Files.createFile(path);
         }
 
         Files.write(path, transactionRecord.getBytes(), StandardOpenOption.APPEND);
-
     }
 }
 

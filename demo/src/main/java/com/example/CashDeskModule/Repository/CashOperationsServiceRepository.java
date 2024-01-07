@@ -10,6 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface CashOperationsServiceRepository extends JpaRepository<CashOperationRequest, UUID> {
-    @Query(value = "SELECT * FROM cash_operations ORDER BY date DESC LIMIT 1", nativeQuery = true)
-    Optional<CashOperationRequest> findLastTransaction();
+    @Query(value = "SELECT * FROM cash_operations WHERE currency = ?1 ORDER BY date DESC LIMIT 1", nativeQuery = true)
+    Optional<CashOperationRequest> findLastTransaction(String currency);
 }

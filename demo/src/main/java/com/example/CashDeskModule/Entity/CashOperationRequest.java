@@ -3,12 +3,8 @@ package com.example.CashDeskModule.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import jakarta.validation.constraints.Pattern;
 import java.util.UUID;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Data
 @Entity
@@ -16,18 +12,26 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class CashOperationRequest {
 
+    @Transient
+    private String denominations;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "transaction_type")
+    @Pattern(regexp = "deposit|withdrawal")
     private String type;
 
-    @Column(name="amount")
+    @Column(name = "amount")
     private double amount;
 
     @Column(name = "Cashier")
-    private String cashier = "Martina"; //I suppose the cashier's name won't change in the future.
+    private String cashier = "Martina";
+
+    @Column(name = "Currency")
+    @Pattern(regexp = "EUR|BGN")
+    private String currency;
 
     @Column(name = "Date")
     private String date;

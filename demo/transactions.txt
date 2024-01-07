@@ -1,18 +1,141 @@
-TRANSACTION REGISTERED:
-Type: deposit
-Amount: 3000.0
-Made by: Martina
-On date & time: 2024/01/07 18:40:25
+BALANCE FOR EUR ACCOUNT:
+BALANCE: 500.0
+Account Holder: Martina
+Checked on date & time: EUR
 
-TRANSACTION REGISTERED:
-Type: withdrawal
-Amount: 0.0
-Made by: Martina
-On date & time: 2024/01/07 18:40:38
+BALANCE FOR EUR ACCOUNT:
+BALANCE: 500.0
+Account Holder: Martina
+Checked on date & time: EUR
 
-TRANSACTION REGISTERED:
-Type: deposit
-Amount: 3000.0
-Made by: Martina
-On date & time: 2024/01/07 18:41:41
+BALANCE FOR EUR ACCOUNT:
+BALANCE: 2000.0
+Account Holder: Martina
+Checked on date & time: EUR
+
+BALANCE FOR BGN ACCOUNT:
+BALANCE: 1500.0
+Account Holder: Martina
+Checked on date & time: BGN
+
+BALANCE FOR BGN ACCOUNT:
+BALANCE: 1000.0
+Account Holder: Martina
+Checked on date & time: BGN
+
+BALANCE FOR EUR ACCOUNT:
+BALANCE: 1500.0
+Account Holder: Martina
+Checked on date & time: EUR
+
+Balance for EUR account as of date 2024/01/07 19:58:06:
+BALANCE: 500.0
+Account Holder: Martina
+
+Balance for BGN account as of date 2024/01/07 19:58:10:
+BALANCE: 500.0
+Account Holder: Martina
+
+Balance for BGN account as of date 2024/01/07 19:58:40:
+BALANCE: 300.0
+Account Holder: Martina
+
+Balance for BGN account as of date 2024/01/07 20:04:30:
+BALANCE: 99.5
+Account Holder: Martina
+
+Balance for BGN account as of date 2024/01/07 20:12:04:
+BALANCE: 200.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for EUR account as of date 2024/01/07 20:12:09:
+BALANCE: 100.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for EUR account as of date 2024/01/07 20:14:23:
+BALANCE: 100.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for EUR account as of date 2024/01/07 20:14:24:
+BALANCE: 200.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for EUR account as of date 2024/01/07 20:14:24:
+BALANCE: 300.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:14:38:
+BALANCE: 100.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:17:00:
+BALANCE: 100.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:17:01:
+BALANCE: 200.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:17:01:
+BALANCE: 300.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:17:02:
+BALANCE: 300.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:27:34:
+BALANCE: 1000.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for EUR account as of date 2024/01/07 20:27:44:
+BALANCE: 2000.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:30:02:
+BALANCE: 1800.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:30:24:
+BALANCE: 200.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:31:28:
+BALANCE: 160.0
+Account Holder: Martina
+
+DENOMINATIONS: null
+Balance for BGN account as of date 2024/01/07 20:37:29:
+BALANCE: 1000.0
+Account Holder: Martina
+DENOMINATIONS: null
+
+Balance for BGN account as of date 2024/01/07 20:37:38:
+BALANCE: 800.0
+Account Holder: Martina
+DENOMINATIONS: null
+
+Balance for BGN account as of date 2024/01/07 20:37:45:
+BALANCE: 380.0
+Account Holder: Martina
+DENOMINATIONS: null
+
+Balance for EUR account as of date 2024/01/07 20:39:03:
+BALANCE: 420.0
+Account Holder: Martina
+DENOMINATIONS: null
 
