@@ -108,7 +108,7 @@ public class CashOperationsServiceImpl implements CashOperationsService {
         LocalDateTime date = LocalDateTime.now();
 
         request.setDate(dtf.format(date));
-        if (file.equals("TRANSACTIONS_FILE")) {
+        if (file.equals("transactions.txt")) {
 
 
             transactionRecord = String.format("""
