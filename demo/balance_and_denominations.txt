@@ -1,10 +1,25 @@
-Balance for BGN account as of date 2024/01/07 20:49:08:
-BALANCE: 420.0
-Account Holder: Martina
-DENOMINATIONS: {50=8, 10=2}
-
-Balance for EUR account as of date 2024/01/07 20:49:13:
+Balance for EUR account as of date 2024/01/07 21:13:36:
 BALANCE: 120.0
 Account Holder: Martina
 DENOMINATIONS: {50=2, 20=1, 10=0}
+
+Balance for BGN account as of date 2024/01/07 21:14:11:
+BALANCE: 870.0
+Account Holder: Martina
+DENOMINATIONS: {50=17, 10=2}
+
+Balance for EUR account as of date 2024/01/07 21:14:47:
+BALANCE: 240.0
+Account Holder: Martina
+DENOMINATIONS: {50=4, 20=2, 10=0}
+
+Balance for BGN account as of date 2024/01/07 21:16:01:
+BALANCE: 870.0
+Account Holder: Martina
+DENOMINATIONS: {50=17, 10=2}
+
+Balance for EUR account as of date 2024/01/07 21:20:25:
+BALANCE: 640.0
+Account Holder: Martina
+DENOMINATIONS: {50=12, 20=2, 10=0}
 

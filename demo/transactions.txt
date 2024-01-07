@@ -12,3 +12,31 @@ Made by: Martina
 Currency: EUR
 On date & time: 2024/01/07 20:49:04
 
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 240.0
+Made by: Martina
+Currency: EUR
+On date & time: 2024/01/07 21:13:42
+
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 870.0
+Made by: Martina
+Currency: BGN
+On date & time: 2024/01/07 21:14:03
+
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 1479.0
+Made by: Martina
+Currency: BGN
+On date & time: 2024/01/07 21:17:57
+
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 640.0
+Made by: Martina
+Currency: EUR
+On date & time: 2024/01/07 21:18:50
+
