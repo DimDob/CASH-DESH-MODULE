@@ -1,0 +1,24 @@
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 1000.0
+Made by: Martina
+On date & time: 2024/01/07 17:58:49
+
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 2000.0
+Made by: Martina
+On date & time: 2024/01/07 17:58:55
+
+TRANSACTION REGISTERED:
+Type: deposit
+Amount: 3000.0
+Made by: Martina
+On date & time: 2024/01/07 17:58:58
+
+TRANSACTION REGISTERED:
+Type: withdrawal
+Amount: 2990.0
+Made by: Martina
+On date & time: 2024/01/07 18:00:05
+

@@ -2,19 +2,33 @@ package com.example.CashDeskModule.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Entity
-@Table(name = "CashOperations")
+@Table(name = "cash_operations")
+@NoArgsConstructor
 public class CashOperationRequest {
-    //The class attrs should always be private. Accessed only by getters
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID) //I believe this will work only if i save the entity in a DB.
-    private UUID requestId = UUID.randomUUID();
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
-    private String type; //The attr "type" param will store the type of the transaction
+    @Column(name = "transaction_type")
+    private String type;
 
-    private double amount; //This would store the amount of the operation
+    @Column(name="amount")
+    private double amount;
 
+    @Column(name = "Cashier")
+    private String cashier = "Martina"; //I suppose the cashier's name won't change in the future.
+
+    @Column(name = "Date")
+    private String date;
 }
