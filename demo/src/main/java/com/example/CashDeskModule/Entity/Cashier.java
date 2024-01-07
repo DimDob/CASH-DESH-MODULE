@@ -2,10 +2,10 @@ package com.example.CashDeskModule.Entity;
 
 
 import jakarta.persistence.Entity;
-import lombok.Getter;
+import lombok.Data;
 
 @Entity
-@Getter
+@Data
 public class Cashier {
 
     private final String NAME = "Martina";
